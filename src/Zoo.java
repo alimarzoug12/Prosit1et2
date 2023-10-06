@@ -4,35 +4,38 @@ public class Zoo {
     String name;
 
     //Instruction 14
-    int NBRCAGES = 25;
-    int animalCount = 0;
+    static final int NBRCAGES = 25;
+    int animalCount;
 
-
+    //Instruction 18
     public Zoo(String name, String city) {
-        Animal[] animals = new Animal[25];
-        this.name = name;
-        this.city = city;
+        if (name ==""){
+            System.out.println("The name of zoo should be not vide!");
+        }
+        else {
+            Animal[] animals = new Animal[25];
+            this.name = name;
+            this.city = city;
+        }
     }
 
     // Instriction 8 -----
 
     public void displayZoo() {
-        System.out.println("Name : " + name);
-        System.out.println("City : " + city);
-        System.out.println("Nombre des Cages : " + NBRCAGES);
+        System.out.println("Name: " + name + ", City: " + city + ", N° Cages: " + NBRCAGES + " N° animals: " + animalCount);
 
     }
 
-    // Instruction 10
+    // Instruction 10 + 17
 
     public boolean addAnimal(Animal animal) {
-        if (animalCount < 25) {
-            animals[animalCount] = animal;
-            animalCount++;
-            return true;
-        } else {
+        if (searchAnimal(animal) != -1)
             return false;
-        }
+        if (isZooFull())
+            return false;
+        animals[animalCount] = animal;
+        animalCount++;
+        return true;
     }
 
     //Instruction 11
@@ -45,12 +48,12 @@ public class Zoo {
     }
 
     public int searchAnimal(Animal animal) {
+        int index = -1;
         for (int i = 0; i < animalCount; i++) {
-            if (animals[i].name.equals(animal.name)) {
+            if (animal.name == animals[i].name)
                 return i;
-            }
         }
-        return -1;
+        return index;
     }
     /*Instruction 12
 
@@ -71,27 +74,27 @@ public class Zoo {
     //Instruction 13
 
     public boolean removeAnimal(Animal animal) {
-        for (int i = 0; i < animalCount; i++) {
-            if (animals[i].name.equals(animal.name)) {
-                for (int j = i; j < animalCount ; j++) {
-                    animals[j] = animals[j + 1];
-                    animals[j + 1] = null;
-                    animalCount--;
-                    return true;
-                }
-            }
-
+        int indexAnimal = searchAnimal(animal);
+        if (indexAnimal == -1)
+            return false;
+        for (int i = indexAnimal; i < animalCount; i++) {
+            animals[i] = animals[i + 1];
         }
-        return false;
+        animals[animalCount] = null;
+        this.animalCount--;
+        return true;
+    }
+    void displayAnimals() {
+        System.out.println("List of animals of " + name + ":");
+        for (int i = 0; i < animalCount; i++) {
+            System.out.println(animals[i]);
+        }
     }
 
     //Instruction 15
 
     public boolean isZooFull(){
-        if (animalCount<NBRCAGES){
-            return false;
-        }
-        return true;
+        return animalCount == NBRCAGES;
     }
 
 
@@ -106,7 +109,10 @@ public class Zoo {
         }
         return z1;
     }
-
+    @Override
+    public String toString() {
+        return "Name: " + name + ", City: " + city + ", N° Cages: " + NBRCAGES + " N° animals: " + animalCount;
+    }
 
 
 

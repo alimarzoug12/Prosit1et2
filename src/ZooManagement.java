@@ -23,7 +23,7 @@ public class ZooManagement {
 
         //Instruction 5
         Animal lion = new Animal("lion", "Simba", 3, true);
-        Zoo myZoo = new Zoo("Belvedere", "Tunis", 25);
+        Zoo myZoo = new Zoo("Belvedere", "Tunis");
 
         /* Instruction 6
         le code devient plus cours et plus claire */

@@ -1,21 +1,75 @@
+package tn.esprit.gestionzoo.entities;
+
 public class Zoo {
-    Animal[] animals;
-    String city;
-    String name;
+    public static final int NBRCAGES = 25;
+    private Animal[] animals;
+    private String name, city;
+    private int animalCount;
+    //Instruction 25
+    private Animal[] aquaticAnimals;
+    private int aquaCount=0;
 
-    //Instruction 14
-    static final int NBRCAGES = 25;
-    int animalCount;
+    public Zoo() {
+    }
 
-    //Instruction 18
     public Zoo(String name, String city) {
-        if (name ==""){
-            System.out.println("The name of zoo should be not vide!");
-        }
-        else {
-            Animal[] animals = new Animal[25];
+        animals = new Animal[NBRCAGES];
+        this.name = name;
+        this.city = city;
+        aquaticAnimals = new Animal[10];
+    }
+
+
+    public Animal[] getAnimals() {
+        return animals;
+    }
+
+    public void setAnimals(Animal[] aquaticAnimals) {
+        this.aquaticAnimals = aquaticAnimals;
+    }
+
+    public Animal[] getAquaticAnimals() {
+        return aquaticAnimals;
+    }
+
+    public void setAquaticAnimals(Animal[] animals) {
+        this.animals = animals;
+    }
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        if (name.isBlank())
+            System.out.println("The Zoo name cannot be empty");
+        else
             this.name = name;
-            this.city = city;
+    }
+
+    public String getCity() {
+        return city;
+    }
+
+    public void setCity(String city) {
+        this.city = city;
+    }
+
+    public int getNbrAnimals() {
+        return animalCount;
+    }
+
+    public void setNbrAnimals(int animalCount) {
+        this.animalCount = animalCount;
+    }
+
+    //Instruction 26
+    public void addAquaticAnimal(Aquatic aquatic){
+        if(aquaCount<10){
+            aquaticAnimals[aquaCount]=aquatic;
+            animalCount++;
+        }
+        else{
+            System.out.println("Le tablau est saturé");
         }
     }
 
@@ -26,16 +80,16 @@ public class Zoo {
 
     }
 
-    // Instruction 10 + 17
+    // Instruction 10 + 17 + 32
 
-    public boolean addAnimal(Animal animal) {
-        if (searchAnimal(animal) != -1)
+    public void addAnimal(Animal animal) {
+        /*if (searchAnimal(animal) != -1)
             return false;
         if (isZooFull())
-            return false;
+            return false;*/
         animals[animalCount] = animal;
         animalCount++;
-        return true;
+
     }
 
     //Instruction 11
@@ -43,14 +97,14 @@ public class Zoo {
     public void afficheAnimal() {
         System.out.println("Les animaux dans le zoo sont :");
         for (int i = 0; i < animalCount; i++) {
-            System.out.println(animals[i].name);
+            System.out.println(animals[i].getName);
         }
     }
 
     public int searchAnimal(Animal animal) {
         int index = -1;
         for (int i = 0; i < animalCount; i++) {
-            if (animal.name == animals[i].name)
+            if (animal.getName == animals[i].getName)
                 return i;
         }
         return index;
@@ -114,6 +168,16 @@ public class Zoo {
         return "Name: " + name + ", City: " + city + ", N° Cages: " + NBRCAGES + " N° animals: " + animalCount;
     }
 
+    //Instruction 29
+    public float maxPenguinSwimmingDepth(){
+        float maxdepth=0;
+        for (Animal animal : aquaticAnimals){
+            if(){
+
+            }
+
+        }
+    }
 
 
 }

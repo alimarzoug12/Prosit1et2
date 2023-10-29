@@ -1,3 +1,6 @@
+package tn.esprit.gestionzoo.main;
+
+import tn.esprit.gestionzoo.entities.*;
 import java.util.Scanner;
 
 public class ZooManagement {
@@ -76,6 +79,30 @@ public class ZooManagement {
         myZoo.addAnimal(mouse);
 
 
+        //Instruction 21
+        Aquatic aqua=new Aquatic("Fish","Thon",1,true,"sea Sfax");
+        Terrestrial terr=new Terrestrial("Wolf","Rex",3,true,4);
+        Dolphin dolf=new Dolphin("Orca","Dol",2,true,"sea Bizerte",56);
+        Penguin pen= new Penguin("Emperor","Betri9",3,true,"Antarctica",200);
+        System.out.println(aqua);
+        System.out.println(terr);
+        System.out.println(dolf);
+        System.out.println(pen);
+        aqua.swim();
+        dolf.swim();
+        pen.swim();
+
+
+        //Instruction 26
+        Aquatic serdina=new Aquatic("Fish","Sardine",2,true,"sea Gabes");
+        Aquatic sbares=new Aquatic("Fish","sbares",1,true,"sea Sfax");
+        myZoo.addAquaticAnimal(serdina);
+        myZoo.addAquaticAnimal(sbares);
+
+        //Instruction 27
+        serdina.swim();
+        sbares.swim();
+        aqua.swim();
 
 
     }

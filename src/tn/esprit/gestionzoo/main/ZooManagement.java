@@ -105,6 +105,21 @@ public class ZooManagement {
         aqua.swim();
 
 
+        //Instruction 38--
+
+        Aquatic aquatic = new Aquatic();
+        aquatic.eatMeat(Food.MEAT);
+        aquatic.eatMeat(Food.PLANT);
+
+        Terrestrial terrestrial = new Terrestrial();
+        terrestrial.eatMeat(Food.MEAT);
+        terrestrial.eatPlant(Food.PLANT);
+        terrestrial.eatPlantAndMeat(Food.BOTH);
+
+        Aquatic penguin = new Penguin();
+        penguin.eatMeat(Food.MEAT);
+        penguin.eatMeat(Food.PLANT);
+
     }
 }
 
